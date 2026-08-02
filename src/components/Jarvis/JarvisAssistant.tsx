@@ -68,7 +68,7 @@ const JarvisAssistant: React.FC<JarvisAssistantProps> = ({ settings, activeAudit
             errors_detected: activeAudit.result.errors.map(e => e.message)
           } : null,
           api_key_override: settings.gemini_api_key,
-          grok_api_key_override: settings.grok_api_key
+          groq_api_key_override: settings.groq_api_key
         })
       });
 

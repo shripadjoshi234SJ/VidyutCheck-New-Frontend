@@ -18,7 +18,7 @@ const DisputeReports: React.FC<DisputeReportsProps> = ({ audits, settings }) => 
     utility_provider: '',
     billing_period: '',
     disputed_amount: 0,
-    currency: '$',
+    currency: '₹',
     findings: [] as string[]
   });
 

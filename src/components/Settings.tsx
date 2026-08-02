@@ -49,17 +49,17 @@ const Settings: React.FC<SettingsProps> = ({ settings, setSettings }) => {
             </div>
 
             <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label">Grok API Key (xAI)</label>
+              <label className="form-label">Groq API Key</label>
               <input
                 type="password"
-                placeholder="Paste your GROK_API_KEY from xAI Console"
-                value={settings.grok_api_key || ''}
-                onChange={(e) => handleInputChange('grok_api_key', e.target.value)}
+                placeholder="Paste your GROQ_API_KEY from Groq Console"
+                value={settings.groq_api_key || ''}
+                onChange={(e) => handleInputChange('groq_api_key', e.target.value)}
                 className="form-input"
                 style={{ fontFamily: 'monospace' }}
               />
               <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem', lineHeight: 1.4 }}>
-                Required for xAI Grok. Get it from the <a href="https://console.x.ai/" target="_blank" rel="noreferrer" style={{ color: 'var(--vivid-purple)', textDecoration: 'underline' }}>xAI console</a>. Chatbot prefers Grok.
+                Required for Groq. Get it from the <a href="https://console.groq.com/" target="_blank" rel="noreferrer" style={{ color: 'var(--vivid-purple)', textDecoration: 'underline' }}>Groq Console</a>. Chatbot prefers Groq.
               </p>
             </div>
           </div>

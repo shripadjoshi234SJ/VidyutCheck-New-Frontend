@@ -41,13 +41,13 @@ const Dashboard: React.FC<DashboardProps> = ({ audits, setActiveTab }) => {
     costByCurrency[c]    = (costByCurrency[c]    || 0) + a.bill.reported_total;
   });
 
-  const primarySavings = savingsByCurrency['$'] || savingsByCurrency['₹'] || 0;
-  const primaryCurrency = savingsByCurrency['$'] ? '$' : (savingsByCurrency['₹'] ? '₹' : '$');
+  const primarySavings = savingsByCurrency['₹'] || savingsByCurrency['₹'] || 0;
+  const primaryCurrency = savingsByCurrency['₹'] ? '₹' : (savingsByCurrency['₹'] ? '₹' : '₹');
   const primaryCost = costByCurrency[primaryCurrency] || 0;
 
   const formatCurrencies = (obj: Record<string, number>) => {
     const keys = Object.keys(obj);
-    if (!keys.length) return '$0.00';
+    if (!keys.length) return '₹0.00';
     return keys.map(k => `${k}${obj[k].toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`).join(' / ');
   };
   void formatCurrencies; // used only if needed in future

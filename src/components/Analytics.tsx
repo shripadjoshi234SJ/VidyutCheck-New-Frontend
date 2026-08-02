@@ -152,7 +152,7 @@ const Analytics: React.FC = () => {
               </div>
 
               <div className="form-group" style={{ margin: 0 }}>
-                <label className="form-label">Gross Install Cost ($)</label>
+                <label className="form-label">Gross Install Cost (₹)</label>
                 <input
                   type="number"
                   min="2000"

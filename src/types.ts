@@ -48,7 +48,7 @@ export interface ChatMessage {
 
 export interface UserSettings {
   gemini_api_key: string;
-  grok_api_key?: string;
+  groq_api_key?: string;
   customer_name: string;
   account_number: string;
   service_address: string;

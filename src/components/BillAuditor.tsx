@@ -152,7 +152,7 @@ const BillAuditor: React.FC<BillAuditorProps> = ({ settings: _settings, onAuditC
         errors.push({
           type: "ENERGY_CHARGE_ERROR",
           severity: "high" as const,
-          message: `Expected energy charge of ${data.provider_id.startsWith('in') ? '₹' : '$'}${expEnergy} (based on ${data.consumption} kWh * rate ${tariff.energy_rate}), but was billed ${data.provider_id.startsWith('in') ? '₹' : '$'}${data.reported_energy_charge}.`,
+          message: `Expected energy charge of ${data.provider_id.startsWith('in') ? '₹' : '₹'}${expEnergy} (based on ${data.consumption} kWh * rate ${tariff.energy_rate}), but was billed ${data.provider_id.startsWith('in') ? '₹' : '₹'}${data.reported_energy_charge}.`,
           disputed_amount: round(data.reported_energy_charge - expEnergy, 2)
         });
         savings += Math.max(0, data.reported_energy_charge - expEnergy);
@@ -163,7 +163,7 @@ const BillAuditor: React.FC<BillAuditorProps> = ({ settings: _settings, onAuditC
         errors.push({
           type: "DEMAND_CHARGE_ERROR",
           severity: "medium" as const,
-          message: `Expected demand charge of ${data.provider_id.startsWith('in') ? '₹' : '$'}${expDemand} (based on demand ${data.peak_demand} kW * rate ${tariff.demand_charge_rate}), but was billed ${data.provider_id.startsWith('in') ? '₹' : '$'}${data.reported_demand_charge}.`,
+          message: `Expected demand charge of ${data.provider_id.startsWith('in') ? '₹' : '₹'}${expDemand} (based on demand ${data.peak_demand} kW * rate ${tariff.demand_charge_rate}), but was billed ${data.provider_id.startsWith('in') ? '₹' : '₹'}${data.reported_demand_charge}.`,
           disputed_amount: round(data.reported_demand_charge - expDemand, 2)
         });
         savings += Math.max(0, data.reported_demand_charge - expDemand);
@@ -185,7 +185,7 @@ const BillAuditor: React.FC<BillAuditorProps> = ({ settings: _settings, onAuditC
         errors.push({
           type: "TAX_CALCULATION_ERROR",
           severity: "medium" as const,
-          message: `Expected taxes of ${data.provider_id.startsWith('in') ? '₹' : '$'}${expTaxes} (rate of ${tariff.tax_rate * 100}%), but was billed ${data.provider_id.startsWith('in') ? '₹' : '$'}${data.reported_taxes}.`,
+          message: `Expected taxes of ${data.provider_id.startsWith('in') ? '₹' : '₹'}${expTaxes} (rate of ${tariff.tax_rate * 100}%), but was billed ${data.provider_id.startsWith('in') ? '₹' : '₹'}${data.reported_taxes}.`,
           disputed_amount: round(data.reported_taxes - expTaxes, 2)
         });
         savings += Math.max(0, data.reported_taxes - expTaxes);
@@ -205,7 +205,7 @@ const BillAuditor: React.FC<BillAuditorProps> = ({ settings: _settings, onAuditC
 
       const localResult: AuditResult = {
         plan_name: tariff.name,
-        currency: data.provider_id.startsWith('in') ? '₹' : '$',
+        currency: data.provider_id.startsWith('in') ? '₹' : '₹',
         has_discrepancies: errors.length > 0,
         errors: errors,
         expected_charges: {
@@ -303,7 +303,7 @@ const BillAuditor: React.FC<BillAuditorProps> = ({ settings: _settings, onAuditC
           errors.push({
             type: "ENERGY_CHARGE_ERROR",
             severity: "high" as const,
-            message: `Expected energy charge of ${formData.provider_id.startsWith('in') ? '₹' : '$'}${expEnergy} (based on ${formData.consumption} kWh * rate ${tariff.energy_rate}), but was billed ${formData.provider_id.startsWith('in') ? '₹' : '$'}${formData.reported_energy_charge}.`,
+            message: `Expected energy charge of ${formData.provider_id.startsWith('in') ? '₹' : '₹'}${expEnergy} (based on ${formData.consumption} kWh * rate ${tariff.energy_rate}), but was billed ${formData.provider_id.startsWith('in') ? '₹' : '₹'}${formData.reported_energy_charge}.`,
             disputed_amount: round(formData.reported_energy_charge - expEnergy, 2)
           });
           savings += Math.max(0, formData.reported_energy_charge - expEnergy);
@@ -314,7 +314,7 @@ const BillAuditor: React.FC<BillAuditorProps> = ({ settings: _settings, onAuditC
           errors.push({
             type: "DEMAND_CHARGE_ERROR",
             severity: "medium" as const,
-            message: `Expected demand charge of ${formData.provider_id.startsWith('in') ? '₹' : '$'}${expDemand} (based on demand ${formData.peak_demand} kW * rate ${tariff.demand_charge_rate}), but was billed ${formData.provider_id.startsWith('in') ? '₹' : '$'}${formData.reported_demand_charge}.`,
+            message: `Expected demand charge of ${formData.provider_id.startsWith('in') ? '₹' : '₹'}${expDemand} (based on demand ${formData.peak_demand} kW * rate ${tariff.demand_charge_rate}), but was billed ${formData.provider_id.startsWith('in') ? '₹' : '₹'}${formData.reported_demand_charge}.`,
             disputed_amount: round(formData.reported_demand_charge - expDemand, 2)
           });
           savings += Math.max(0, formData.reported_demand_charge - expDemand);
@@ -336,7 +336,7 @@ const BillAuditor: React.FC<BillAuditorProps> = ({ settings: _settings, onAuditC
           errors.push({
             type: "TAX_CALCULATION_ERROR",
             severity: "medium" as const,
-            message: `Expected taxes of ${formData.provider_id.startsWith('in') ? '₹' : '$'}${expTaxes} (rate of ${tariff.tax_rate * 100}%), but was billed ${formData.provider_id.startsWith('in') ? '₹' : '$'}${formData.reported_taxes}.`,
+            message: `Expected taxes of ${formData.provider_id.startsWith('in') ? '₹' : '₹'}${expTaxes} (rate of ${tariff.tax_rate * 100}%), but was billed ${formData.provider_id.startsWith('in') ? '₹' : '₹'}${formData.reported_taxes}.`,
             disputed_amount: round(formData.reported_taxes - expTaxes, 2)
           });
           savings += Math.max(0, formData.reported_taxes - expTaxes);
@@ -356,7 +356,7 @@ const BillAuditor: React.FC<BillAuditorProps> = ({ settings: _settings, onAuditC
 
         const localResult: AuditResult = {
           plan_name: tariff.name,
-          currency: formData.provider_id.startsWith('in') ? '₹' : '$',
+          currency: formData.provider_id.startsWith('in') ? '₹' : '₹',
           has_discrepancies: errors.length > 0,
           errors: errors,
           expected_charges: {

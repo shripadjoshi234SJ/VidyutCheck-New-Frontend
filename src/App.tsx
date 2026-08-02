@@ -22,7 +22,7 @@ const App: React.FC = () => {
     const saved = localStorage.getItem('vidyutcheck_settings');
     return saved ? JSON.parse(saved) : {
       gemini_api_key: '',
-      grok_api_key: '',
+      groq_api_key: '',
       customer_name: 'Tony Stark',
       account_number: '9845-0982-12',
       service_address: '10880 Malibu Point, Malibu, CA 90265',
@@ -56,19 +56,19 @@ const App: React.FC = () => {
           bill: sampleBills[0].bill,
           result: {
             plan_name: "Consolidated Edison (ConEd) - EL2 Commercial",
-            currency: "$",
+            currency: "₹",
             has_discrepancies: true,
             errors: [
               {
                 type: "ENERGY_CHARGE_ERROR",
                 severity: "high",
-                message: "Expected energy charge of $2160.00 (based on 12000 kWh * multiplier 1.0 * rate $0.18/kWh), but was billed $2560.00.",
+                message: "Expected energy charge of ₹2160.00 (based on 12000 kWh * multiplier 1.0 * rate ₹0.18/kWh), but was billed ₹2560.00.",
                 disputed_amount: 400.00
               },
               {
                 type: "TAX_CALCULATION_ERROR",
                 severity: "medium",
-                message: "Expected taxes of approx $260.00 (based on rate of 8.5% on subtotal), but was billed $420.50.",
+                message: "Expected taxes of approx ₹260.00 (based on rate of 8.5% on subtotal), but was billed ₹420.50.",
                 disputed_amount: 160.50
               }
             ],
