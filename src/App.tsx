@@ -25,8 +25,8 @@ const App: React.FC = () => {
       groq_api_key: '',
       customer_name: 'Tony Stark',
       account_number: '9845-0982-12',
-      service_address: '10880 Malibu Point, Malibu, CA 90265',
-      default_provider: 'us-coned-commercial',
+      service_address: 'Plot 42, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra 400093',
+      default_provider: 'in-msedcl-industrial',
     };
   });
 
@@ -55,39 +55,6 @@ const App: React.FC = () => {
           date_audited: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
           bill: sampleBills[0].bill,
           result: {
-            plan_name: "Consolidated Edison (ConEd) - EL2 Commercial",
-            currency: "₹",
-            has_discrepancies: true,
-            errors: [
-              {
-                type: "ENERGY_CHARGE_ERROR",
-                severity: "high",
-                message: "Expected energy charge of ₹2160.00 (based on 12000 kWh * multiplier 1.0 * rate ₹0.18/kWh), but was billed ₹2560.00.",
-                disputed_amount: 400.00
-              },
-              {
-                type: "TAX_CALCULATION_ERROR",
-                severity: "medium",
-                message: "Expected taxes of approx ₹260.00 (based on rate of 8.5% on subtotal), but was billed ₹420.50.",
-                disputed_amount: 160.50
-              }
-            ],
-            expected_charges: {
-              energy_charge: 2160.00,
-              demand_charge: 832.50,
-              fixed_charge: 25.00,
-              taxes: 260.00,
-              surcharges: 120.00,
-              total: 3397.50
-            },
-            potential_savings: 560.50
-          }
-        },
-        {
-          id: "audit-2",
-          date_audited: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
-          bill: sampleBills[1].bill,
-          result: {
             plan_name: "MSEDCL - HT-I Industrial",
             currency: "₹",
             has_discrepancies: true,
@@ -109,7 +76,34 @@ const App: React.FC = () => {
               surcharges: 25000.00,
               total: 554240.00
             },
-            potential_savings: 0.0
+            potential_savings: 28900.00
+          }
+        },
+        {
+          id: "audit-2",
+          date_audited: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
+          bill: sampleBills[1].bill,
+          result: {
+            plan_name: "BESCOM - LT-3 Commercial",
+            currency: "₹",
+            has_discrepancies: true,
+            errors: [
+              {
+                type: "ENERGY_CHARGE_ERROR",
+                severity: "high",
+                message: "Expected energy charge of ₹23040.00 (based on 3200 kWh * multiplier 1.0 * rate ₹7.20/kWh), but was billed ₹230400.00 due to multiplier 10.0 error.",
+                disputed_amount: 207360.00
+              }
+            ],
+            expected_charges: {
+              energy_charge: 23040.00,
+              demand_charge: 6160.00,
+              fixed_charge: 150.00,
+              taxes: 2637.90,
+              surcharges: 0.00,
+              total: 31987.90
+            },
+            potential_savings: 226026.00
           }
         }
       ];

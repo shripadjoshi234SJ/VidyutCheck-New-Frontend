@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { Leaf, Sun, Info } from 'lucide-react';
 
 const Analytics: React.FC = () => {
-  // Solar Calculator State
-  const [avgBill, setAvgBill] = useState<number>(350);
-  const [solarSize, setSolarSize] = useState<number>(8); // kW
-  const [installCost, setInstallCost] = useState<number>(14500); // USD
-  const [taxCredit, setTaxCredit] = useState<boolean>(true); // 30% FTC in US
+  // Solar Calculator State (INR)
+  const [avgBill, setAvgBill] = useState<number>(25000);
+  const [solarSize, setSolarSize] = useState<number>(10); // kW
+  const [installCost, setInstallCost] = useState<number>(450000); // INR ₹4.5 Lakhs
+  const [taxCredit, setTaxCredit] = useState<boolean>(true); // 30% Govt Rooftop Solar Subsidy
 
   // Payback calculation
   const netInstallCost = taxCredit ? installCost * 0.70 : installCost;
   // Estimate: 1kW solar produces ~125 kWh per month
   const monthlyProduction = solarSize * 125;
-  const energyRate = 0.24; // Average rate
+  const energyRate = 8.5; // Average Indian tariff rate per kWh in INR
   const monthlySavings = monthlyProduction * energyRate;
   const paybackYears = netInstallCost / (monthlySavings * 12);
   const lifetimeSavings = (monthlySavings * 12 * 25) - netInstallCost; // 25 year solar lifespan
@@ -44,7 +44,7 @@ const Analytics: React.FC = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
               <div style={{ padding: '1rem', backgroundColor: 'var(--bg-surface-elevated)', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Grid Carbon Intensity</p>
-                <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)' }}>0.85 lbs <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>CO2/kWh</span></h4>
+                <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)' }}>0.85 kg <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>CO2/kWh</span></h4>
               </div>
               <div style={{ padding: '1rem', backgroundColor: 'var(--bg-surface-elevated)', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Equivalent Trees Planted</p>
@@ -125,13 +125,13 @@ const Analytics: React.FC = () => {
             <div className="form-group" style={{ margin: 0 }}>
               <label className="form-label" style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>Average Monthly Bill Cost</span>
-                <span>${avgBill}</span>
+                <span>₹{avgBill.toLocaleString()}</span>
               </label>
               <input
                 type="range"
-                min="50"
-                max="2000"
-                step="25"
+                min="1000"
+                max="200000"
+                step="1000"
                 value={avgBill}
                 onChange={(e) => setAvgBill(parseInt(e.target.value))}
                 style={{ width: '100%', accentColor: 'var(--electric-blue)' }}
@@ -155,10 +155,11 @@ const Analytics: React.FC = () => {
                 <label className="form-label">Gross Install Cost (₹)</label>
                 <input
                   type="number"
-                  min="2000"
-                  max="200000"
+                  min="50000"
+                  max="5000000"
+                  step="10000"
                   value={installCost}
-                  onChange={(e) => setInstallCost(Math.max(1000, parseFloat(e.target.value) || 0))}
+                  onChange={(e) => setInstallCost(Math.max(10000, parseFloat(e.target.value) || 0))}
                   className="form-input"
                 />
               </div>
@@ -173,7 +174,7 @@ const Analytics: React.FC = () => {
                 style={{ width: '16px', height: '16px', accentColor: 'var(--electric-blue)' }}
               />
               <label htmlFor="taxCredit" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', cursor: 'pointer' }}>
-                Apply Federal Investment Tax Credit (30% discount)
+                Apply Government Rooftop Solar Subsidy (30% discount)
               </label>
             </div>
 
@@ -191,7 +192,7 @@ const Analytics: React.FC = () => {
               <div>
                 <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Net Cost</p>
                 <span style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                  ${netInstallCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                  ₹{netInstallCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </span>
               </div>
 
@@ -205,7 +206,7 @@ const Analytics: React.FC = () => {
               <div>
                 <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Net Savings (25 yr)</p>
                 <span style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--neon-emerald)' }}>
-                  ${lifetimeSavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                  ₹{lifetimeSavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 </span>
               </div>
             </div>

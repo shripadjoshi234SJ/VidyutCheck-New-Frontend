@@ -61,8 +61,8 @@ const Dashboard: React.FC<DashboardProps> = ({ audits, setActiveTab }) => {
 
   /* bar chart data — last 6 months mock shaped from real audits */
   const months = ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
-  const billedVals  = [3200, 4100, 3800, 5200, 4700, 3958];
-  const expectedVals= [2900, 3800, 3400, 4200, 4100, 3397];
+  const billedVals  = [320000, 410000, 380000, 520000, 470000, 554240];
+  const expectedVals= [290000, 380000, 340000, 420000, 410000, 525340];
   const maxVal = Math.max(...billedVals, ...expectedVals);
 
   return (
@@ -180,7 +180,7 @@ const Dashboard: React.FC<DashboardProps> = ({ audits, setActiveTab }) => {
             <div>
               <h3 style={{ fontSize:'1.15rem', fontWeight:800 }}>Billing vs Expected</h3>
               <p style={{ fontSize:'0.78rem', color:'var(--text-secondary)', marginTop:'0.2rem' }}>
-                Billed totals compared to auditor-calculated charges (USD)
+                Billed totals compared to auditor-calculated charges (INR / ₹)
               </p>
             </div>
             <div style={{ display:'flex', gap:'1rem', fontSize:'0.75rem' }}>
@@ -355,7 +355,7 @@ const Dashboard: React.FC<DashboardProps> = ({ audits, setActiveTab }) => {
             <div>
               <h4 style={{ fontSize:'0.92rem', fontWeight:700, marginBottom:'0.25rem' }}>Tax Overcalculation Alert</h4>
               <p style={{ fontSize:'0.81rem', color:'var(--text-secondary)', lineHeight:1.45 }}>
-                ConEd has been overcalculating tax riders on gross subtotals rather than net tariffs in 8% of commercial accounts. Check June/July records.
+                BESCOM / MSEDCL has been overcalculating tax riders on gross subtotals rather than net tariffs in 8% of commercial accounts. Check June/July records.
               </p>
             </div>
           </div>

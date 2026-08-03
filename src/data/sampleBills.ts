@@ -10,34 +10,13 @@ export interface SampleBillScenario {
 
 export const sampleBills: SampleBillScenario[] = [
   {
-    id: "coned-erroneous-commercial",
-    name: "NY ConEd Commercial Bill (Billing Error)",
-    description: "New York retail shop. Billed energy charges are higher than the published EL2 commercial tariff rate, and taxes were calculated on a duplicate total subtotal.",
-    expectedDiscrepancy: "Energy calculation mismatch and duplicate tax billing.",
-    bill: {
-      provider_id: "us-coned-commercial",
-      billing_period: "June 2026",
-      contracted_load: 60.0,
-      peak_demand: 45.0,
-      consumption: 12000.0,
-      power_factor: 0.92,
-      meter_multiplier: 1.0,
-      reported_energy_charge: 2560.00,
-      reported_demand_charge: 832.50,
-      reported_fixed_charge: 25.00,
-      reported_taxes: 420.50,
-      reported_surcharges: 120.00,
-      reported_total: 3958.00
-    }
-  },
-  {
     id: "msedcl-industrial-lowpf",
     name: "MSEDCL Industrial Bill (Low Power Factor)",
-    description: "Maharashtra heavy engineering unit. The plant runs heavy machinery with a low Power Factor of 0.82, triggering a utility PF surcharge. Also features a meter multiplier of 80.0.",
+    description: "Maharashtra heavy engineering unit. The plant runs heavy machinery with a low Power Factor of 0.82, triggering a utility PF surcharge penalty.",
     expectedDiscrepancy: "Power factor penalty alert and capacitor bank saving suggestion.",
     bill: {
       provider_id: "in-msedcl-industrial",
-      billing_period: "May 2026",
+      billing_period: "July 2026",
       contracted_load: 250.0,
       peak_demand: 210.0,
       consumption: 42500.0,
@@ -52,34 +31,13 @@ export const sampleBills: SampleBillScenario[] = [
     }
   },
   {
-    id: "pge-clean-residential",
-    name: "CA PG&E Residential Bill (Correct Billing)",
-    description: "San Francisco apartment. Standard energy billing based on PG&E E-1 rate without any discrepancies or billing anomalies.",
-    expectedDiscrepancy: "No discrepancies found.",
-    bill: {
-      provider_id: "us-pge-residential",
-      billing_period: "July 2026",
-      contracted_load: 10.0,
-      peak_demand: 4.2,
-      consumption: 480.0,
-      power_factor: 0.98,
-      meter_multiplier: 1.0,
-      reported_energy_charge: 153.60,
-      reported_demand_charge: 0.00,
-      reported_fixed_charge: 10.00,
-      reported_taxes: 13.09,
-      reported_surcharges: 0.00,
-      reported_total: 176.69
-    }
-  },
-  {
     id: "bescom-multiplier-error",
     name: "BESCOM Commercial Bill (Multiplier Error)",
-    description: "Bangalore office building. The meter multiplier was calculated incorrectly as 10.0 instead of the documented 1.0, resulting in a 10x overcharge on energy consumption.",
+    description: "Bangalore tech park office. The meter multiplier constant was calculated incorrectly as 10.0 instead of 1.0, resulting in a massive overcharge.",
     expectedDiscrepancy: "High energy overcharge due to meter multiplier mismatch.",
     bill: {
       provider_id: "in-bescom-commercial",
-      billing_period: "April 2026",
+      billing_period: "June 2026",
       contracted_load: 35.0,
       peak_demand: 28.0,
       consumption: 3200.0,
@@ -91,6 +49,48 @@ export const sampleBills: SampleBillScenario[] = [
       reported_taxes: 21303.90,
       reported_surcharges: 0.00,
       reported_total: 258013.90
+    }
+  },
+  {
+    id: "tangedco-tax-error",
+    name: "TANGEDCO Commercial Bill (Tax Overbilling)",
+    description: "Chennai retail store. State utility taxes were calculated on a duplicated subtotal including non-taxable municipal riders.",
+    expectedDiscrepancy: "Tax overcalculation mismatch.",
+    bill: {
+      provider_id: "in-tangedco-commercial",
+      billing_period: "May 2026",
+      contracted_load: 80.0,
+      peak_demand: 65.0,
+      consumption: 15000.0,
+      power_factor: 0.94,
+      meter_multiplier: 1.0,
+      reported_energy_charge: 142500.00,
+      reported_demand_charge: 22750.00,
+      reported_fixed_charge: 300.00,
+      reported_taxes: 28500.00,
+      reported_surcharges: 5000.00,
+      reported_total: 199050.00
+    }
+  },
+  {
+    id: "tpddl-clean-residential",
+    name: "TPDDL Residential Bill (Clean Billing)",
+    description: "Delhi apartment statement. Standard residential tariff billing according to TPDDL slab rates without any calculation errors.",
+    expectedDiscrepancy: "No discrepancies found.",
+    bill: {
+      provider_id: "in-tpddl-residential",
+      billing_period: "July 2026",
+      contracted_load: 5.0,
+      peak_demand: 3.8,
+      consumption: 450.0,
+      power_factor: 0.96,
+      meter_multiplier: 1.0,
+      reported_energy_charge: 2925.00,
+      reported_demand_charge: 0.00,
+      reported_fixed_charge: 125.00,
+      reported_taxes: 152.50,
+      reported_surcharges: 0.00,
+      reported_total: 3202.50
     }
   }
 ];
